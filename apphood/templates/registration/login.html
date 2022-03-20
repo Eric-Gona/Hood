@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags %}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card mx-xl-5 post">
+
+  <!-- Card body -->
+    <div class="card-body ">
+                 <p class="h4 text-center py-4">Join Today</p>
+
+       <form action="" method="post" class="grey-text font-weight-light">
+                {% csrf_token %}
+                {{ form|crispy }}
+         <div class="form-group text-center py-4 mt-3">
+        <button class="btn btn-cyan" type="submit">Log in
+        </button>
+      </div>
+         </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't have an account register here? <a class="ml-2" href=""> Register</a>
+            </small>
+        </div>
+     </div>
+  <!-- Card body -->
+</div>
+         </form>
+            <!--end form-->
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock content%}
