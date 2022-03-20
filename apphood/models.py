@@ -50,3 +50,29 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('aphood:home')
+
+class Neighborhood(models.Model):
+    name = models.CharField(max_length=30)
+    location = models.CharField(max_length=30)
+    rent_rates = models.IntegerField(default=0)
+    description = models.CharField(max_length=30)
+    closest_health_contact = models.IntegerField(default=0)
+    closest_security_contact = models.IntegerField(default=0)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class Business(models.Model):
+    name = models.CharField(max_length=30)
+    business_pic = models.ImageField(upload_to='photos/', default='biz.jpg')
+    description = models.TextField()
+    profile = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.description
+
+    def get_absolute_url(self):
+        return reverse('aphood:business')
