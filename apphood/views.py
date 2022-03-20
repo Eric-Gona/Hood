@@ -40,3 +40,19 @@ class CreateBusiness(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.profile = self.request.user
         return super().form_valid(form)
+
+class SinglePost(LoginRequiredMixin, DetailView):
+    model = Post
+    template_name = 'post-detail.html'
+    login_url = 'login'
+
+
+class UpdateProfile(UpdateView):
+    model = Profile
+    template_name = 'update_profile.html'
+
+
+class BusinessPage(LoginRequiredMixin, ListView):
+    model = Business
+    template_name = 'business.html'
+    login_url = 'login'
