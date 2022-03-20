@@ -1,0 +1,112 @@
+{% extends 'base.html'%}
+{%block content%}
+<div class="container-fluid">
+   <div class="row">
+     <div class="col-md-1"></div>
+    <div class="col-md-10 text-center mt-5">
+      
+        
+                <h2 class="display-4 text-center">Nhood Posts </h2>
+            
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+<div class="container-fluid mt-5 two">
+    {% for post in object_list %}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+
+  <!--Section: Content-->
+  <section class="dark-grey-text">
+
+    <!-- Section heading -->
+
+<!--    &lt;!&ndash; Section description &ndash;&gt;-->
+<!--    <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>-->
+
+  	<!-- Grid row -->
+    <div class="row align-items-center">
+
+      <!-- Grid column -->
+      <div class="col-lg-5 col-xl-4">
+
+        <!-- Featured image -->
+
+        <div class="view overlay rounded z-depth-half ">
+          <img class="img-fluid  picp " src="{{post.picture.url}}" alt="Sample image">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-lg-7 col-xl-8">
+
+        <!-- Post title -->
+        <h4 class="font-weight-bold mb-3"><a href="{% url 'aphood:post-detail' post.id %}" style="color:black"><strong>{{post.title}}</strong></a></h4>
+        <!-- Excerpt -->
+        <p class="dark-grey-text"style="color:white;">{{post.content}}.</p>
+        <!-- Post data -->
+        <p>by <a class="font-weight-bold">{{post.profile}}</a>&nbsp;&nbsp;{{post.pub_date|timesince}} AGO</p>
+        <!-- Read more button -->
+        <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    <hr class="my-1">
+
+  </section>
+  <!--Section: Content-->
+
+        </div>
+<div class="col-md-1"></div>
+    </div>
+    {% empty %}
+    <!--empty section visible while there are no posts-->
+    <div class="row">
+            <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <!-- Jumbotron -->
+        <div class="jumbotron text-center">
+
+  <!-- Title -->
+        <h4 class="card-title h4 pb-2"><strong>No posts yet Sing Up and Share</strong></h4>
+
+  <!-- Card image -->
+        <div class="view overlay my-4">
+             <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" class="img-fluid" alt="">
+            <a href="#">
+                <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+
+        <h5 class="indigo-text h5 mb-4">Nhood status</h5>
+
+        <p class="card-text">keep informed the people of your hood.</p>
+
+  <!-- Linkedin -->
+        <a class="fa-lg p-2 m-2 li-ic"><i class="fab fa-linkedin-in grey-text"></i></a>
+  <!-- Twitter -->
+        <a class="fa-lg p-2 m-2 tw-ic"><i class="fab fa-twitter grey-text"></i></a>
+  <!-- Dribbble -->
+        <a class="fa-lg p-2 m-2 fb-ic"><i class="fab fa-facebook-f grey-text"></i></a>
+
+        </div>
+<!-- Jumbotron -->
+            </div>
+            <div class="col-md-2"></div>
+            </div>
+            </div>
+    {%endfor%}
+</div>
+{%endblock%}
