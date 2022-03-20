@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{%load static%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 one">
+                <div class="card testimonial-card profile one">
+
+  <!-- Background color -->
+  <div class="card-up indigo lighten-1"></div>
+
+  <!-- Avatar -->
+
+  <div class="avatar mx-auto white mt-3">
+       {%if user.profile%}
+   <img src="{{user.profile.profile_pic.url}}"  alt="profile pic" class="rounded-circle" >
+      {%else%}
+      <img src="{%static 'images/profile.jpg'%}" class="rounded-circle" alt="profile pic">
+      {%endif%}
+  </div>
+
+<hr>
+  <!-- Content -->
+  <div class="card-body">
+    <!-- Name -->
+    <h4 class="card-title">{{user.username}}</h4>
+       <p class="card-title colo text-muted font-weight-light">{{user.email}}</p>
+      <p class="card-title colo text-muted font-weight-light">{{user.profile.phone_number}}</p>
+    <hr>
+    <!-- Quotation -->
+    <p >Bio: &nbsp; {{user.profile.bio}}
+    </p>
+      <a href="{%url 'aphood:update_profile' user.profile.pk %}"><button type="button" class="btn btn-success" style="float:right">Update Profile</button>
+</a>
+  </div>
+
+</div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{%endblock%}
