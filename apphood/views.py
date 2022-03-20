@@ -18,3 +18,25 @@ class HomePage(LoginRequiredMixin, ListView):
 class ProfilePage(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
     login_url = 'login'
+
+class CreateNewPost(LoginRequiredMixin, CreateView):
+    model = Post
+    template_name = 'new_post.html'
+    fields = ['title', 'content', 'picture']
+    login_url = 'login'
+
+    def form_valid(self, form):
+        form.instance.profile = self.request.user
+        form.instance.neighborhood = self.request.user
+        return super().form_valid(form)
+
+
+class CreateBusiness(LoginRequiredMixin, CreateView):
+    model = Business
+    template_name = 'new_business.html'
+    fields = ['name', 'description','business_pic']
+    login_url = 'login'
+
+    def form_valid(self, form):
+        form.instance.profile = self.request.user
+        return super().form_valid(form)
