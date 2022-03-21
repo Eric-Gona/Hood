@@ -95,7 +95,7 @@ DATABASES = {
 }
 # production
 else:
-   DATABASES = {
+    DATABASES = {
        'default': dj_database_url.config(
            default=config('DATABASE_URL')
        )
@@ -153,8 +153,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'aphood:home'
-LOGOUT_REDIRECT_URL = 'aphood:home'
+LOGIN_REDIRECT_URL = 'apphood:home'
+LOGOUT_REDIRECT_URL = 'apphood:home'
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
